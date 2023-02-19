@@ -49,8 +49,9 @@ void esraa()
     freopen("input.txt", "r", stdin), freopen("output.txt", "w", stdout);
 #endif
 }
+const int MOD = 998244353;
 
-ll modinv(ll a, ll m = Mod){ 
+ll modinv(ll a, ll m = MOD){ 
     ll y = 0, x = 1;
     if (m == 1) return 0;
     while (a > 1){
@@ -61,8 +62,20 @@ ll modinv(ll a, ll m = Mod){
         y = x - q * y;
         x = t;
     }
-    if (x < 0) x += Mod;
+    if (x < 0) x += MOD;
     return x;
+}
+
+int add(int x, int y){
+    return ((x + y) % MOD + MOD) % MOD;
+}
+
+int mul(int x, int y){
+    return x * 1ll * y % MOD;   
+}
+
+int divide(int x, int y){
+    return mul(x, modinv(y));
 }
 // if m is prime
 ll bin_exp(ll a, ll b, ll m = Mod){
