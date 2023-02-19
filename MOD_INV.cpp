@@ -77,6 +77,17 @@ int mul(int x, int y){
 int divide(int x, int y){
     return mul(x, modinv(y));
 }
+vector < ll > fact(1e6 + 1, 1);
+void factorial(){
+    for(int i = 2; i <= 1e6; i++)
+        fact[i] = (fact[i - 1] * i) % MOD;
+}
+
+ll nCr(ll n, ll r){
+    if(r > n) return 0;
+    return (fact[n] * modinv(fact[r]) % MOD * modinv(fact[n - r]) % MOD) % MOD;
+}
+
 // if m is prime
 ll bin_exp(ll a, ll b, ll m = Mod){
     a %= m;
