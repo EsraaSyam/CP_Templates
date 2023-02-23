@@ -66,15 +66,15 @@ ll modinv(ll a, ll m = MOD){
     return x;
 }
 
-int add(int x, int y){
-    return ((x + y) % MOD + MOD) % MOD;
+ll add(ll x, ll y){
+    return ((x % MOD + y % MOD) % MOD + MOD) % MOD;
 }
 
-int mul(int x, int y){
-    return x * 1ll * y % MOD;   
+ll mul(ll x, ll y){
+    return(x % MOD * 1ll * y % MOD) % MOD;   
 }
 
-int divide(int x, int y){
+ll divide(ll x, ll y){
     return mul(x, modinv(y));
 }
 vector < ll > fact(1e6 + 1, 1);
