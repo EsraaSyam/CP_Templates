@@ -73,7 +73,31 @@ double get_angle_A_abc(double a , double b , double c){
 // tan(a - b) = (tan(a) - tan(b)) / (1 + tan(a) * tan(b))
 
 
+double TriangleArea(double a , double b , double c){
+    double s = (a + b + c) / 2.0;
+    return sqrt(s * (s - a) * (s - b) * (s - c));
+}
 
+double TriangleArea(point p0 , point p1 , point p2){
+    double a = length(vec(p0 , p1)) , b = length(vec(p1 , p2)) , c = length(vec(p2 , p0));
+    return TriangleArea(a , b , c);
+}
+
+// give the length of the median of the triangle
+double TriangleMedian(double a , double b , double c){ 
+    double s = (a + b + c) / 2.0;
+    return 2.0 * sqrt(s * (s - a) * (s - b) * (s - c)) / c;
+}
+
+// give the length of the median of the triangl , get the area of the triangle
+double Triangle_area_from_median(double m1 , double m2 , double m3){
+    if(m1 < 0 || m2 < 0 || m3 < 0) return -1;
+    double s = (m1 + m2 + m3) / 2.0;
+    double median_area = sqrt(s * (s - m1) * (s - m2) * (s - m3));
+    double area = 0.4  / 0.3 * sqrt(median_area);
+    if(median_area <= 0.0 or area <= 0) return -1;
+    return area;
+}
 
 
 
